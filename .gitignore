@@ -216,3 +216,20 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Vivado
+.Xil
+clockInfo.txt
+
+# Yosys
+abc.history
+
+# directories
+rtl
+reports
+results
+projects
+benchmarking/perf_tests/rtl
+benchmarking/sim_tests/sim_build
+benchmarking/sim_tests/tests
+
