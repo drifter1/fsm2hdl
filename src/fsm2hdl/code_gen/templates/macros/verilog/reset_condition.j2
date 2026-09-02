@@ -1,0 +1,7 @@
+{%- macro reset_condition(reset_active_level) -%}
+{% if reset_active_level == 'ACTIVE_LOW' -%}
+rst == 1'b0
+{%- elif reset_active_level == 'ACTIVE_HIGH' -%}
+rst == 1'b1
+{%- endif %} 
+{%- endmacro %}

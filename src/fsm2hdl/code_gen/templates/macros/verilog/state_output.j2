@@ -1,0 +1,29 @@
+{%- from 'verilog/outputs.j2' import fsm_outputs_all_zeroed, state_or_transition_outputs -%}
+{%- from 'verilog/state_transition_condition.j2' import state_transition_condition -%}
+
+{%- macro state_output_moore(coding_structure, output_handling_method, fsm_outputs, state_outputs) -%}
+{{ state_or_transition_outputs(coding_structure, output_handling_method, fsm_outputs, state_outputs) | indent(4) }}
+{%- endmacro %}
+
+{%- macro state_output_mealy(coding_structure, output_handling_method, fsm_outputs, state_transitions) -%}
+{%- for transition in state_transitions %}
+    {%- if transition.inputs[0].name != '1' %}
+    {%- if loop.first %}
+    if ({{state_transition_condition(transition)}}) begin
+        {{- state_or_transition_outputs(coding_structure, output_handling_method, fsm_outputs, transition.outputs) | indent(8) }}
+    end
+    {%- else %}
+    else if ({{state_transition_condition(transition)}}) begin
+        {{- state_or_transition_outputs(coding_structure, output_handling_method, fsm_outputs, transition.outputs) | indent(8) }}
+    end
+    {%- endif %}
+    {%- else %}
+    {{- state_or_transition_outputs(coding_structure, output_handling_method, fsm_outputs, transition.outputs) | indent(4) }}
+    {%- endif %}
+{%- endfor %}
+    {%- if state_transitions[0].inputs[0].name != '1' and output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' %}
+    else begin
+        {{- fsm_outputs_all_zeroed(coding_structure, fsm_outputs) | indent(8) }}
+    end
+    {%- endif %}
+{%- endmacro %}

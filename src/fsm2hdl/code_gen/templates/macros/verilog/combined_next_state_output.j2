@@ -1,0 +1,83 @@
+{%- from 'verilog/outputs.j2' import fsm_outputs_all_zeroed, state_or_transition_outputs -%}
+{%- from 'verilog/state_transition_condition.j2' import state_transition_condition -%}
+
+{%- macro combined_next_state_output_moore(coding_structure, output_handling_method, fsm_outputs, state_outputs, state_transitions, state_name) -%}
+    {{ state_or_transition_outputs(coding_structure, output_handling_method, fsm_outputs, state_outputs) | indent(4) }}
+{% for transition in state_transitions %}
+    {%- if transition.inputs[0].name != '1' %}
+        {%- if loop.first and loop.last %}
+    if ({{state_transition_condition(transition)}}) begin
+        state_next = {{ transition.state_target }};
+    end
+    else begin
+        state_next = {{ state_name }};
+    end
+        {%- elif loop.first %}
+    if ({{state_transition_condition(transition)}}) begin
+        state_next = {{ transition.state_target }};
+    end
+        {%- elif loop.last %}
+    else if ({{state_transition_condition(transition)}}) begin       
+        state_next = {{ transition.state_target }};
+    end
+    else begin
+        state_next = {{ state_name }};
+    end
+        {%- else %}
+    else if ({{state_transition_condition(transition)}}) begin
+        state_next = {{ transition.state_target }};
+    end
+        {%- endif %}
+    {%- else %}
+    state_next = {{ transition.state_target }};
+    {%- endif %}
+{%- endfor %}
+{%- endmacro %}
+
+{%- macro combined_next_state_output_mealy(coding_structure, output_handling_method, fsm_outputs, state_transitions, state_name) -%}
+{%- for transition in state_transitions %}
+    {%- if transition.inputs[0].name != '1' %}
+        {%- if loop.first and loop.last %}
+    if ({{state_transition_condition(transition)}}) begin
+        {{- state_or_transition_outputs(coding_structure, output_handling_method, fsm_outputs, transition.outputs) | indent(8) }}
+
+        state_next = {{ transition.state_target }};
+    end
+    else begin
+        {%- if output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' -%}
+        {{- fsm_outputs_all_zeroed(coding_structure, fsm_outputs) | indent(8) }}
+        {% endif %}
+        state_next = {{ state_name }};
+    end
+        {%- elif loop.first %}
+    if ({{state_transition_condition(transition)}}) begin
+        {{- state_or_transition_outputs(coding_structure, output_handling_method, fsm_outputs, transition.outputs) | indent(8) }}
+
+        state_next = {{ transition.state_target }};
+    end
+        {%- elif loop.last %}
+    else if ({{state_transition_condition(transition)}}) begin
+        {{- state_or_transition_outputs(coding_structure, output_handling_method, fsm_outputs, transition.outputs) | indent(8) }}
+
+        state_next = {{ transition.state_target }};
+    end
+    else begin
+        {%- if output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' -%}
+        {{- fsm_outputs_all_zeroed(coding_structure, fsm_outputs) | indent(8) }}
+        {% endif %}
+        state_next = {{ state_name }};
+    end
+        {%- else %}
+    else if ({{state_transition_condition(transition)}}) begin
+        {{- state_or_transition_outputs(coding_structure, output_handling_method, fsm_outputs, transition.outputs) | indent(8) }}
+
+        state_next = {{ transition.state_target }};
+    end
+        {%- endif %}
+    {%- else %}
+    {{- state_or_transition_outputs(coding_structure, output_handling_method, fsm_outputs, transition.outputs) | indent(4) }}
+
+    state_next = {{ transition.state_target }};
+    {%- endif %}
+{%- endfor %}
+{%- endmacro %}

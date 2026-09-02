@@ -1,0 +1,12 @@
+{%- macro arch_header(name) -%}
+architecture rtl of {{ name }} is
+{%- endmacro %}
+
+{%- macro arch_start() -%}
+begin
+{%- endmacro %}
+
+{%- macro arch_end() -%}
+end rtl;
+{# explicit final newline #}
+{%- endmacro %}

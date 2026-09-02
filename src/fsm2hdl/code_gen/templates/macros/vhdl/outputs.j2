@@ -1,0 +1,27 @@
+{% from 'common/outputs.j2' import all_outputs_zeroed_non_blocking_generic %}
+{% from 'common/outputs.j2' import non_zero_outputs_non_blocking_generic %}
+{% from 'common/outputs.j2' import all_outputs_non_blocking_generic %}
+
+{# Non-blocking all outputs zeroed macro for VHDL #}
+{%- macro all_outputs_zeroed_non_blocking(outputs) -%}
+{{ all_outputs_zeroed_non_blocking_generic(outputs, '\'0\'') }}
+{%- endmacro %}
+
+{# Blocking non-zero outputs macro used only in VHDL #}
+{%- macro non_zero_outputs_non_blocking(outputs) -%}
+{{ non_zero_outputs_non_blocking_generic(outputs, '\'1\'') }}
+{%- endmacro %}
+
+{# Non-blocking all outputs macro used only in VHDL #}
+{%- macro all_outputs_non_blocking(fsm_outputs, non_zero_outputs) -%}
+{{ all_outputs_non_blocking_generic(fsm_outputs, non_zero_outputs, '\'0\'', '\'1\'') }}
+{%- endmacro %}
+
+{# Macro for outputting appropriate state or transition outputs based on configuration parameters #}
+{%- macro state_or_transition_outputs(output_handling_method, fsm_outputs, state_or_transition_outputs) -%}
+{%- if output_handling_method == 'ALL_OUTPUTS_ZEROED_BEFORE_STATE_LOGIC' -%}
+{{ non_zero_outputs_non_blocking(state_or_transition_outputs) }}
+{%- elif output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' -%}
+{{ all_outputs_non_blocking(fsm_outputs, state_or_transition_outputs) }}
+{%- endif -%}
+{%- endmacro %}

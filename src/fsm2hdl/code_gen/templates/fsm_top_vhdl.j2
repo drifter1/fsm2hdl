@@ -1,0 +1,38 @@
+{%- from 'vhdl/architecture.j2' import arch_header, arch_start, arch_end -%}
+{%- from 'vhdl/directives.j2' import library, use -%}
+{%- from 'vhdl/entity.j2' import entity_header -%}
+{%- from 'vhdl/generation_info.j2' import generation_info -%}
+{%- from 'vhdl/state_constants.j2' import state_constants -%}
+{%- from 'vhdl/state_registers.j2' import state_registers -%}
+
+{{ generation_info(version, timestamp, gen_conf_vector, summary, repository) }}
+
+{{ library() }}
+{{ use() }}
+
+{{ entity_header(fsm.name, fsm.outputs, fsm.inputs) }}
+
+{{ arch_header(fsm.name) }}
+
+{{ state_constants(state_constant_pair, state_bits) }}
+{{ state_registers(coding_structure, state_bits) }}
+{{ arch_start() }}
+{% if coding_structure == 'SEPARATE_ALL' %}
+{% include 'fsm_state_register_update.j2' %}
+
+{% include 'fsm_next_state.j2' %}
+
+{% include 'fsm_state_output.j2' %}
+{%- elif coding_structure == 'SEPARATE_COMB_AND_SEQ' %}
+{% include 'fsm_state_register_update.j2' %}
+
+{% include 'fsm_combined_next_state_output.j2' %}
+{%- elif coding_structure == 'SEPARATE_COMB_OUT' %}
+{% include 'fsm_combined_state_register_next_state.j2' %}
+
+{% include 'fsm_state_output.j2' %}
+{%- elif coding_structure == 'ALL_IN_ONE' %}
+{% include 'fsm_all_in_one_logic.j2' %}
+{%- endif %}
+
+{{ arch_end() }}

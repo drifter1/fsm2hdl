@@ -1,0 +1,58 @@
+{% from 'common/outputs.j2' import all_outputs_zeroed_non_blocking_generic, all_outputs_zeroed %}
+{% from 'common/outputs.j2' import non_zero_outputs_non_blocking_generic, non_zero_outputs %}
+{% from 'common/outputs.j2' import all_outputs_non_blocking_generic, all_outputs %}
+
+{# Non-blocking all outputs zeroed macro for Verilog #}
+{%- macro all_outputs_zeroed_non_blocking(outputs) -%}
+{{ all_outputs_zeroed_non_blocking_generic(outputs, '1\'b0') }}
+{%- endmacro %}
+
+{# Blocking all outputs zeroed macro used only in Verilog #}
+{%- macro all_outputs_zeroed_blocking(outputs) -%}
+{{ all_outputs_zeroed(outputs, False, '1\'b0') }}
+{%- endmacro %}
+
+{# Blocking non-zero outputs macro used only in Verilog #}
+{%- macro non_zero_outputs_non_blocking(outputs) -%}
+{{ non_zero_outputs_non_blocking_generic(outputs, '1\'b1') }}
+{%- endmacro %}
+
+{# Blocking non-zero outputs macro used only in Verilog #}
+{%- macro non_zero_outputs_blocking(outputs) -%}
+{{ non_zero_outputs(outputs, False, '1\'b1') }}
+{%- endmacro %}
+
+{# Non-blocking all outputs macro used only in Verilog #}
+{%- macro all_outputs_non_blocking(fsm_outputs, non_zero_outputs) -%}
+{{ all_outputs_non_blocking_generic(fsm_outputs, non_zero_outputs, '1\'b0', '1\'b1') }}
+{%- endmacro %}
+
+{# Blocking all outputs macro used only in Verilog #}
+{%- macro all_outputs_blocking(fsm_outputs, non_zero_outputs) -%}
+{{ all_outputs(fsm_outputs, non_zero_outputs, False, '1\'b0', '1\'b1') }}
+{%- endmacro %}
+
+{# Macro for outputting appropriate state or transition outputs based on configuration parameters #}
+{%- macro state_or_transition_outputs(coding_structure, output_handling_method, fsm_outputs, state_or_transition_outputs) -%}
+{%- if coding_structure == 'ALL_IN_ONE' %}
+{%- if output_handling_method == 'ALL_OUTPUTS_ZEROED_BEFORE_STATE_LOGIC' -%}
+{{ non_zero_outputs_non_blocking(state_or_transition_outputs) }}
+{%- elif output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' -%}
+{{ all_outputs_non_blocking(fsm_outputs, state_or_transition_outputs) }}
+{%- endif -%}
+{%- else %}
+{%- if output_handling_method == 'ALL_OUTPUTS_ZEROED_BEFORE_STATE_LOGIC' -%}
+{{ non_zero_outputs_blocking(state_or_transition_outputs) }}
+{%- elif output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' -%}
+{{ all_outputs_blocking(fsm_outputs, state_or_transition_outputs) }}
+{%- endif -%}
+{%- endif -%}
+{%- endmacro %}
+
+{%- macro fsm_outputs_all_zeroed(coding_structure, fsm_outputs) -%}
+{%- if coding_structure == 'ALL_IN_ONE' %}
+{{- all_outputs_zeroed_non_blocking(fsm_outputs) }}
+{%- else %}
+{{- all_outputs_zeroed_blocking(fsm_outputs) }}
+{%- endif -%}
+{%- endmacro %}

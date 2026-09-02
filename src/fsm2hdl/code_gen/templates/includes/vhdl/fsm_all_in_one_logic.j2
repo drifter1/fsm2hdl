@@ -1,0 +1,32 @@
+{%- from 'vhdl/reset_condition.j2' import reset_condition -%}
+{%- from 'vhdl/sensitivity_list.j2' import sequential_logic_sensitivity_list -%}
+{%- from 'vhdl/outputs.j2' import all_outputs_zeroed_non_blocking -%}
+
+-- combined all in one logic
+process({{ sequential_logic_sensitivity_list(reset_type) }})
+begin
+    {%- if reset_type == 'SYNC' %}
+    if rising_edge(clk) then
+        if {{ reset_condition(reset_active_level) }} then
+            {{- all_outputs_zeroed_non_blocking(fsm.outputs) | indent(12) }}
+
+            state <= {{ fsm.start_state }};
+        else
+            {%- filter indent(12) -%}
+            {%- include 'fsm_all_in_one_logic_comb_part.j2' -%}
+            {%- endfilter %}
+    {%- elif reset_type == 'ASYNC' %}
+    if {{ reset_condition(reset_active_level) }} then
+        {{- all_outputs_zeroed_non_blocking(fsm.outputs) | indent(8) }}
+
+        state <= {{ fsm.start_state }};
+    elsif rising_edge(clk) then
+        {%- filter indent(8) -%}
+        {%- include 'fsm_all_in_one_logic_comb_part.j2' -%}
+        {%- endfilter %}
+{%- endif %}
+{%- if reset_type == 'SYNC' %}
+        end if;
+{%- endif %}
+    end if;
+end process;

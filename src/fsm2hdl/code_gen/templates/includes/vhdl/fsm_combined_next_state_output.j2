@@ -1,0 +1,48 @@
+{%- from 'vhdl/combined_next_state_output.j2' import combined_next_state_output_moore, combined_next_state_output_mealy -%}
+{%- from 'vhdl/outputs.j2' import all_outputs_zeroed_non_blocking -%}
+{%- from 'vhdl/sensitivity_list.j2' import next_state_sensitivity_list -%}
+{%- from 'vhdl/state_condition.j2' import state_condition -%}
+
+-- combined state transition and output logic
+process({{ next_state_sensitivity_list(combinatorial_sensitivity_mode, fsm.inputs) }})
+begin
+    {%- if output_handling_method == 'ALL_OUTPUTS_ZEROED_BEFORE_STATE_LOGIC' -%}
+    {{ all_outputs_zeroed_non_blocking(fsm.outputs) | indent(4)}}
+    {% endif %}
+    {%- if combinatorial_structure == 'CASE_WITH_NESTED_IF_ELSE' %}
+    case state is
+    {%- for state in fsm.states.values() %}
+        {{ state_condition(combinatorial_structure, state.name, False) }}
+            {%- if fsm.fsm_type.name == 'MOORE' -%}
+            {{ combined_next_state_output_moore(output_handling_method, fsm.outputs, state.outputs, state.transitions, state.name) | indent(8)}}
+            {%- elif fsm.fsm_type.name == 'MEALY' -%}
+            {{ combined_next_state_output_mealy(output_handling_method, fsm.outputs, state.transitions, state.name) | indent(8) }}
+            {%- endif %}
+    {%- endfor %}
+        when others =>
+            {%- if output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' -%}
+            {{ all_outputs_zeroed_non_blocking(fsm.outputs) | indent(12)}}
+            {% endif %}
+            state_next <= {{ default_state }};
+    end case;
+    {%- elif combinatorial_structure == 'IF_ELSE_NESTED' %}
+{%- for state in fsm.states.values() %}
+    {%- if loop.first %}
+    {{ state_condition(combinatorial_structure, state.name, True) }}
+    {%- else %}
+    {{ state_condition(combinatorial_structure, state.name, False) }}
+    {%- endif %}
+        {%- if fsm.fsm_type.name == 'MOORE' -%}
+        {{ combined_next_state_output_moore(output_handling_method, fsm.outputs, state.outputs, state.transitions, state.name) | indent(4)}}
+        {%- elif fsm.fsm_type.name == 'MEALY' -%}
+        {{ combined_next_state_output_mealy(output_handling_method, fsm.outputs, state.transitions, state.name) | indent(4) }}
+        {%- endif %}
+{%- endfor %}
+    else
+        {%- if output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' -%}
+        {{ all_outputs_zeroed_non_blocking(fsm.outputs) | indent(8)}}
+        {% endif %}
+        state_next <= {{ default_state }};
+    end if;
+    {%- endif %}
+end process;

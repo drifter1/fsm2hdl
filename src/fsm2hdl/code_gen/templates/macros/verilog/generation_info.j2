@@ -1,0 +1,12 @@
+{%- from 'common/generation_info.j2' import gen_conf_vector_text, summary_text, timestamp_text, version_text -%}
+
+{%- macro generation_info(version, timestamp, gen_conf_vector, summary, repository) -%}
+// ------------------------------------------------------------------
+// {{ version_text(version) }}
+// {{ timestamp_text(timestamp) }}
+// {{ gen_conf_vector_text(gen_conf_vector) }}
+// ------------------------------------------------------------------
+
+// {{ summary_text(summary) }}
+// {{ repository }}
+{%- endmacro %}

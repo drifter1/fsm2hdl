@@ -1,0 +1,30 @@
+{%- from 'vhdl/next_state.j2' import next_state -%}
+{%- from 'vhdl/sensitivity_list.j2' import next_state_sensitivity_list -%}
+{%- from 'vhdl/state_condition.j2' import state_condition -%}
+
+-- next state logic
+process({{ next_state_sensitivity_list(combinatorial_sensitivity_mode, fsm.inputs) }})
+begin
+    {%- if combinatorial_structure == 'CASE_WITH_NESTED_IF_ELSE' %}
+    case state is
+    {%- for state in fsm.states.values() %}
+        {{ state_condition(combinatorial_structure, state.name, False) }}
+           {{- next_state(state.transitions, state.name) | indent(8) }}
+    {%- endfor %}
+        when others =>
+            state_next <= {{ default_state }};
+    end case;
+    {%- elif combinatorial_structure == 'IF_ELSE_NESTED' %}
+{%- for state in fsm.states.values() %}
+    {%- if loop.first %}
+    {{ state_condition(combinatorial_structure, state.name, True) }}
+    {%- else %}
+    {{ state_condition(combinatorial_structure, state.name, False) }}
+    {%- endif %}
+        {{- next_state(state.transitions, state.name) | indent(4) }}
+{%- endfor %}
+    else
+        state_next <= {{ default_state }};
+    end if;
+    {%- endif %}
+end process;

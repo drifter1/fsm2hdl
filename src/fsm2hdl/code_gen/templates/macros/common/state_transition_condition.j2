@@ -1,0 +1,9 @@
+{%- macro state_transition_condition_generic(transition, not_repr, and_repr) -%}
+{%- for transition_input in transition.inputs %}
+{%- if loop.last %}
+{%- if transition_input.inverted %}{{ not_repr }}{{ transition_input.name }}{% else %}{{ transition_input.name }}{% endif %}
+{%- else %}
+{%- if transition_input.inverted %}{{ not_repr }}{{ transition_input.name }} {{ and_repr }} {% else %}{{ transition_input.name }} {{ and_repr }} {% endif %}
+{%- endif %}
+{%- endfor %}
+{%- endmacro %}

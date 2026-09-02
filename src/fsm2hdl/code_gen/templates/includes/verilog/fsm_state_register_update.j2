@@ -1,0 +1,12 @@
+{%- from 'verilog/reset_condition.j2' import reset_condition -%}
+{%- from 'verilog/sensitivity_list.j2' import sequential_logic_sensitivity_list -%}
+
+// state register update logic
+always @({{ sequential_logic_sensitivity_list(reset_type, reset_active_level) }}) begin
+    if ({{ reset_condition(reset_active_level) }}) begin
+        state <= {{ fsm.start_state }};
+    end
+    else begin
+        state <= state_next;
+    end
+end

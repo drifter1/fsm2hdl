@@ -1,0 +1,63 @@
+{% from 'common/assignment.j2' import non_blocking_assignment, blocking_assignment %}
+
+{# A generic all outputs zeroed macro shared between Verilog and VHDL #}
+{# It takes in non_blocking boolean flag and zero bit representation #}
+{%- macro all_outputs_zeroed(outputs, non_blocking, zero_bit_repr) -%}
+{%- for output in outputs %}
+{%- if non_blocking %}
+{{ non_blocking_assignment(output, zero_bit_repr) }}
+{%- else %}
+{{ blocking_assignment(output, zero_bit_repr) }}
+{%- endif %}
+{%- endfor %}
+{%- endmacro %}
+
+{# A generic non-zero outputs macro shared between Verilog and VHDL #}
+{# It takes in non_blocking boolean flag and one bit representation #}
+{%- macro non_zero_outputs(outputs, non_blocking, one_bit_repr) -%}
+{%- for output in outputs %}
+{%- if non_blocking %}
+{{ non_blocking_assignment(output, one_bit_repr) }}
+{%- else %}
+{{ blocking_assignment(output, one_bit_repr) }}
+{%- endif %}
+{%- endfor %}
+{%- endmacro %}
+
+{# A generic all outputs macro shared between Verilog and VHDL #}
+{# It takes in non_blocking boolean flag and zero/one bit representations #}
+{%- macro all_outputs(fsm_outputs, non_zero_outputs, non_blocking, zero_bit_repr, one_bit_repr) -%}
+{%- for output in fsm_outputs %}
+{%- if output in non_zero_outputs %}
+{%- if non_blocking %}
+{{ non_blocking_assignment(output, one_bit_repr) }}
+{%- else %}
+{{ blocking_assignment(output, one_bit_repr) }}
+{%- endif %}
+{%- else %}
+{%- if non_blocking %}
+{{ non_blocking_assignment(output, zero_bit_repr) }}
+{%- else %}
+{{ blocking_assignment(output, zero_bit_repr) }}
+{%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- endmacro %}
+
+{# Generic non-blocking all outputs zeroed macro shared between Verilog and VHDL #}
+{# It takes in the zero bit representation #}
+{%- macro all_outputs_zeroed_non_blocking_generic(outputs, zero_bit_repr) -%}
+{{ all_outputs_zeroed(outputs, True, zero_bit_repr) }}
+{%- endmacro %}
+
+{# Generic non-blocking non-zero outputs macro shared between Verilog and VHDL #}
+{# It takes in the one bit representation #}
+{%- macro non_zero_outputs_non_blocking_generic(outputs, one_bit_repr) -%}
+{{ non_zero_outputs(outputs, True, one_bit_repr) }}
+{%- endmacro %}
+
+{# Generic non-blocking all outputs macro shared between Verilog and VHDL #}
+{# It takes in the zero/one bit representations #}
+{%- macro all_outputs_non_blocking_generic(fsm_outputs, non_zero_outputs, zero_bit_repr, one_bit_repr) -%}
+{{ all_outputs(fsm_outputs, non_zero_outputs, True, zero_bit_repr, one_bit_repr) }}
+{%- endmacro %}

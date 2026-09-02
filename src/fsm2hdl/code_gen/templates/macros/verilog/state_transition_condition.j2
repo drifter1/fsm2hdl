@@ -1,0 +1,5 @@
+{% from 'common/state_transition_condition.j2' import state_transition_condition_generic %}
+
+{%- macro state_transition_condition(transition) -%}
+{{ state_transition_condition_generic(transition, '~', '&&')}}
+{%- endmacro %}

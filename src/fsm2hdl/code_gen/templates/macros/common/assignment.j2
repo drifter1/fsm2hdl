@@ -1,0 +1,9 @@
+{# A non-blocking assignment, shared between Verilog and VHDL #}
+{%- macro non_blocking_assignment(destination, source) -%}
+{{ destination }} <= {{ source }};
+{%- endmacro %}
+
+{# A blocking assignment macro used only in Verilog #}
+{%- macro blocking_assignment(destination, source) -%}
+{{ destination }} = {{ source }};
+{%- endmacro %}

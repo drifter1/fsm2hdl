@@ -1,0 +1,6 @@
+{%- macro state_constants(state_constant_pair, state_bits) -%}
+-- states
+{% for state, constant in state_constant_pair -%}
+constant {{ state.name }} : std_logic_vector({{ state_bits-1 }} downto 0) := "{{ constant }}";
+{% endfor %}
+{%- endmacro %}

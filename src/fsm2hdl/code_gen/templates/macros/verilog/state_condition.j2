@@ -1,0 +1,15 @@
+{%- macro state_condition_if_else_nested(state_name, is_first) -%}
+{%- if is_first -%}
+if (state == {{ state_name }})
+{%- else -%}
+else if (state == {{ state_name }})
+{%- endif -%}
+{%- endmacro %}
+
+{%- macro state_condition(combinatorial_structure, state_name, is_first) -%}
+{%- if  combinatorial_structure == 'CASE_WITH_NESTED_IF_ELSE' -%}
+{{ state_name }} :
+{%- elif combinatorial_structure  == 'IF_ELSE_NESTED' -%}
+{{ state_condition_if_else_nested(state_name, is_first) }}
+{%- endif %} 
+{%- endmacro %}

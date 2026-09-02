@@ -1,0 +1,17 @@
+{# A generic delimiter separated list macro shared between Verilog and VHDL #}
+{# It doesn't include delimiter/separator after last entry  #}
+{%- macro delim_sep_list(list, sep) -%}
+{%- for entry in list -%}
+{% if loop.last %}{{ entry }}{% else %}{{ entry }}{{ sep }} {% endif %}
+{%- endfor %}
+{%- endmacro -%}
+
+{# A comma separated list macro shared between Verilog and VHDL #}
+{%- macro comma_sep_list(list) -%}
+{{ delim_sep_list(list, ',')}}
+{%- endmacro -%}
+
+{# A comma separated list macro used only in Verilog #}
+{%- macro or_sep_list(list) -%}
+{{ delim_sep_list(list, ' or')}}
+{%- endmacro -%}

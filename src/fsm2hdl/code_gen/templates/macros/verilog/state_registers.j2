@@ -1,0 +1,11 @@
+{%- macro state_register(state_bits, name) -%}
+reg [{{ state_bits-1 }} : 0] {{ name }};
+{%- endmacro -%}
+
+{%- macro state_registers(coding_structure, state_bits) -%}
+// state registers
+{{ state_register(state_bits, 'state') }}
+{% if coding_structure != 'ALL_IN_ONE' and coding_structure != 'SEPARATE_COMB_OUT' -%}
+{{ state_register(state_bits, 'state_next') }}
+{% endif -%}
+{%- endmacro -%}

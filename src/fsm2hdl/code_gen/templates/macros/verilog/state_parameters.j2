@@ -1,0 +1,6 @@
+{%- macro state_parameters(state_parameter_pair, state_bits) -%}
+// states
+{% for state, parameter in state_parameter_pair -%}
+localparam [{{ state_bits-1 }} : 0] {{ state.name }} = {{ state_bits }}'b{{ parameter }};
+{% endfor %}
+{%- endmacro %}

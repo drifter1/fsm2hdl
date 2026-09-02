@@ -1,0 +1,50 @@
+{%- from 'vhdl/outputs.j2' import all_outputs_zeroed_non_blocking -%}
+{%- from 'vhdl/sensitivity_list.j2' import state_output_sensitivity_list -%}
+{%- from 'vhdl/state_condition.j2' import state_condition -%}
+{%- from 'vhdl/state_output.j2' import state_output_moore, state_output_mealy -%}
+
+-- state output logic
+process({{ state_output_sensitivity_list(combinatorial_sensitivity_mode, fsm.fsm_type.name, fsm.inputs) }})
+begin
+    {%- if output_handling_method == 'ALL_OUTPUTS_ZEROED_BEFORE_STATE_LOGIC' -%}
+    {{ all_outputs_zeroed_non_blocking(fsm.outputs) | indent(4)}}
+    {% endif %}
+    {%- if combinatorial_structure == 'CASE_WITH_NESTED_IF_ELSE' %}
+    case state is
+    {%- for state in fsm.states.values() %}
+        {{ state_condition(combinatorial_structure, state.name, False) }}
+            {%- if fsm.fsm_type.name == 'MOORE' -%}
+            {{ state_output_moore(output_handling_method, fsm.outputs, state.outputs) | indent(8) }}
+            {%- elif fsm.fsm_type.name == 'MEALY' -%}
+            {{ state_output_mealy(output_handling_method, fsm.outputs, state.transitions) | indent(8) }}
+            {%- endif %}
+    {%- endfor %}
+        when others =>
+        {%- if output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' -%}
+        {{ all_outputs_zeroed_non_blocking(fsm.outputs) | indent(12)}}
+        {%- else %}
+            null;
+        {%- endif %}
+    end case;
+    {%- elif combinatorial_structure == 'IF_ELSE_NESTED' %}
+    {%- for state in fsm.states.values() %}
+    {%- if loop.first %}
+    {{ state_condition(combinatorial_structure, state.name, True) }}
+    {%- else %}
+    {{ state_condition(combinatorial_structure, state.name, False) }}
+    {%- endif %}
+        {%- if fsm.fsm_type.name == 'MOORE' -%}
+        {{ state_output_moore(output_handling_method, fsm.outputs, state.outputs) | indent(4) }}
+        {%- elif fsm.fsm_type.name == 'MEALY' -%}
+        {{ state_output_mealy(output_handling_method, fsm.outputs, state.transitions) | indent(4) }}
+        {%- endif %}
+{%- endfor %}
+    else
+    {%- if output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' -%}
+    {{ all_outputs_zeroed_non_blocking(fsm.outputs) | indent(8)}}
+    {%- else %}
+        null;
+    {%- endif %}
+    end if;
+    {%- endif %}
+end process;

@@ -1,0 +1,77 @@
+{%- from 'vhdl/outputs.j2' import all_outputs_zeroed_non_blocking, state_or_transition_outputs -%}
+{%- from 'vhdl/state_transition_condition.j2' import state_transition_condition -%}
+
+{%- macro all_in_one_moore(output_handling_method, fsm_outputs, state_outputs, state_transitions, state_name) -%}
+    {{ state_or_transition_outputs(output_handling_method, fsm_outputs, state_outputs) | indent(4) }}
+{% for transition in state_transitions %}
+    {%- if transition.inputs[0].name != '1' %}
+    {%- if loop.first and loop.last %}
+    if ({{state_transition_condition(transition)}}) = '1' then
+        state <= {{ transition.state_target }};
+    else
+        state <= {{ state_name }};
+    {%- elif loop.first %}
+    if ({{state_transition_condition(transition)}}) = '1' then
+        state <= {{ transition.state_target }};
+    {%- elif loop.last %}
+    elsif ({{state_transition_condition(transition)}}) = '1' then
+        state <= {{ transition.state_target }};
+    else
+        state <= {{ state_name }};
+    {%- else %}
+    elsif ({{state_transition_condition(transition)}}) = '1' then
+        state <= {{ transition.state_target }};
+    {%- endif %}
+    {%- else %}
+    state <= {{ transition.state_target }};
+    {%- endif %}
+{%- endfor %}
+{%- if state_transitions[0].inputs[0].name != '1' %}
+    end if;
+{%- endif %}
+{%- endmacro%}
+
+{%- macro all_in_one_mealy(output_handling_method, fsm_outputs, state_transitions, state_name) -%}
+{%- for transition in state_transitions %}
+    {%- if transition.inputs[0].name != '1' %}
+    {%- if loop.first and loop.last %}
+    if ({{state_transition_condition(transition)}}) = '1' then
+        {{- state_or_transition_outputs(output_handling_method, fsm_outputs, transition.outputs) | indent(8) }}
+
+        state <= {{ transition.state_target }};
+    else
+        {%- if output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' -%}
+        {{ all_outputs_zeroed_non_blocking(fsm_outputs) | indent(8)}}
+        {% endif %}
+        state <= {{ state_name }};
+    {%- elif loop.first %}
+    if ({{state_transition_condition(transition)}}) = '1' then
+        {{- state_or_transition_outputs(output_handling_method, fsm_outputs, transition.outputs) | indent(8) }}
+
+        state <= {{ transition.state_target }};
+    {%- elif loop.last %}
+    elsif ({{state_transition_condition(transition)}}) = '1' then
+        {{- state_or_transition_outputs(output_handling_method, fsm_outputs, transition.outputs) | indent(8) }}
+
+        state <= {{ transition.state_target }};
+    else
+        {%- if output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' -%}
+        {{ all_outputs_zeroed_non_blocking(fsm_outputs) | indent(8)}}
+        {% endif %}
+        state <= {{ state_name }};
+    {%- else %}
+    elsif ({{state_transition_condition(transition)}}) = '1' then
+        {{- state_or_transition_outputs(output_handling_method, fsm_outputs, transition.outputs) | indent(8) }}
+
+        state <= {{ transition.state_target }};
+    {%- endif %}
+    {%- else %}
+    {{- state_or_transition_outputs(output_handling_method, fsm_outputs, transition.outputs) | indent(4) }}
+
+    state <= {{ transition.state_target }};
+    {%- endif %}
+{%- endfor %}
+{%- if state_transitions[0].inputs[0].name != '1' %}
+    end if;
+{%- endif %}
+{%- endmacro%}

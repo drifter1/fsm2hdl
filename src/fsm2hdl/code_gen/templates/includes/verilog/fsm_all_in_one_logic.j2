@@ -1,0 +1,58 @@
+{%- from 'verilog/all_in_one.j2' import all_in_one_moore, all_in_one_mealy -%}
+{%- from 'verilog/outputs.j2' import fsm_outputs_all_zeroed -%}
+{%- from 'verilog/reset_condition.j2' import reset_condition -%}
+{%- from 'verilog/sensitivity_list.j2' import sequential_logic_sensitivity_list -%}
+{%- from 'verilog/state_condition.j2' import state_condition -%}
+
+// combined all in one logic
+always @({{ sequential_logic_sensitivity_list(reset_type, reset_active_level) }}) begin
+    if ({{ reset_condition(reset_active_level) }}) begin
+        {{- fsm_outputs_all_zeroed(coding_structure, fsm.outputs) | indent(8) }}
+        
+        state <= {{ fsm.start_state }};
+    end
+    else begin
+        {%- if output_handling_method == 'ALL_OUTPUTS_ZEROED_BEFORE_STATE_LOGIC' -%}
+        {{- fsm_outputs_all_zeroed(coding_structure, fsm.outputs) | indent(8) }}
+        {% endif %}
+        {%- if combinatorial_structure == 'CASE_WITH_NESTED_IF_ELSE' %}
+        case (state)
+        {%- for state in fsm.states.values() %}
+            {{ state_condition(combinatorial_structure, state.name, False) }} begin
+                {%- if fsm.fsm_type.name == 'MOORE' -%}
+                {{ all_in_one_moore(coding_structure, output_handling_method, fsm.outputs, state.outputs, state.transitions, state.name) | indent(12)}}
+                {%- elif fsm.fsm_type.name == 'MEALY' -%}
+                {{ all_in_one_mealy(coding_structure, output_handling_method, fsm.outputs, state.transitions, state.name) | indent(12) }}
+                {%- endif %}
+            end
+        {%- endfor %}
+            default : begin
+                {%- if output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' -%}
+                {{- fsm_outputs_all_zeroed(coding_structure, fsm.outputs) | indent(16) }}
+                {% endif %}
+                state <= {{ default_state }};
+            end
+        endcase
+        {%- elif  combinatorial_structure == 'IF_ELSE_NESTED' %}
+    {%- for state in fsm.states.values() %}
+        {%- if loop.first %}
+        {{ state_condition(combinatorial_structure, state.name, True) }}
+        {%- else %}
+        {{ state_condition(combinatorial_structure, state.name, False) }}
+        {%- endif %} begin
+            {%- if fsm.fsm_type.name == 'MOORE' -%}
+            {{ all_in_one_moore(coding_structure, output_handling_method, fsm.outputs, state.outputs, state.transitions, state.name) | indent(8)}}
+            {%- elif fsm.fsm_type.name == 'MEALY' -%}
+            {{ all_in_one_mealy(coding_structure, output_handling_method, fsm.outputs, state.transitions, state.name) | indent(8) }}
+            {%- endif %}
+        end
+    {%- endfor %}
+        else begin
+            {%- if output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' -%}
+            {{- fsm_outputs_all_zeroed(coding_structure, fsm.outputs) | indent(12) }}
+            {% endif %}
+            state <= {{ default_state }};
+        end
+        {%- endif %}        
+    end
+end

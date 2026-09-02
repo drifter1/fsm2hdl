@@ -1,0 +1,43 @@
+{%- from 'vhdl/outputs.j2' import all_outputs_zeroed_non_blocking, state_or_transition_outputs -%}
+{%- from 'vhdl/state_transition_condition.j2' import state_transition_condition -%}
+
+{%- macro state_output_moore(output_handling_method, fsm_outputs, state_outputs) -%}
+{{- state_or_transition_outputs(output_handling_method, fsm_outputs, state_outputs) | indent(4) }}
+{%- if state_outputs|length == 0 and output_handling_method == 'ALL_OUTPUTS_ZEROED_BEFORE_STATE_LOGIC' %}
+    null;
+{%- endif %}
+{%- endmacro %}
+
+{%- macro state_output_mealy(output_handling_method, fsm_outputs, state_transitions) -%}
+{%- for transition in state_transitions %}
+    {%- if transition.inputs[0].name != '1' %}
+    {%- if loop.first %}
+    if ({{state_transition_condition(transition)}}) = '1' then
+        {{- state_or_transition_outputs(output_handling_method, fsm_outputs, transition.outputs) | indent(8) }}
+        {%- if transition.outputs|length == 0 and output_handling_method == 'ALL_OUTPUTS_ZEROED_BEFORE_STATE_LOGIC' %}
+        null;
+        {%- endif %}
+    {%- else %}
+    elsif ({{state_transition_condition(transition)}}) = '1' then
+        {{- state_or_transition_outputs(output_handling_method, fsm_outputs, transition.outputs) | indent(8) }}
+        {%- if transition.outputs|length == 0 and output_handling_method == 'ALL_OUTPUTS_ZEROED_BEFORE_STATE_LOGIC' %}
+        null;
+        {%- endif %}
+    {%- endif %}
+    {%- else %}
+    {{- state_or_transition_outputs(output_handling_method, fsm_outputs, transition.outputs) | indent(4) }}
+    {%- if transition.outputs|length == 0 %}
+    null;
+    {%- endif %}
+    {%- endif %}
+{%- endfor %}
+    {%- if output_handling_method == 'ALL_OUTPUTS_SET_FROM_STATE_LOGIC' %}
+    {%- if state_transitions[0].inputs[0].name != '1' %}
+    else
+        {{- all_outputs_zeroed_non_blocking(fsm_outputs) | indent(8)}}
+    {%- endif %}
+    {%- endif %}
+    {%- if state_transitions[0].inputs[0].name != '1' %}
+    end if;
+    {%- endif %}
+{%- endmacro %}

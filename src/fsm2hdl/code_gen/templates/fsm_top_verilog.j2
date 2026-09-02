@@ -1,0 +1,34 @@
+{%- from 'verilog/directives.j2' import timescale -%}
+{%- from 'verilog/generation_info.j2' import generation_info -%}
+{%- from 'verilog/module.j2' import header, end -%}
+{%- from 'verilog/state_parameters.j2' import state_parameters -%}
+{%- from 'verilog/state_registers.j2' import state_registers -%}
+
+{{ generation_info(version, timestamp, gen_conf_vector, summary, repository) }}
+
+{{ timescale() }}
+
+{{ header(fsm.name, fsm.outputs, fsm.inputs) }}
+
+{{ state_parameters(state_parameter_pair, state_bits) }}
+{{ state_registers(coding_structure, state_bits) }}
+
+{%- if coding_structure == 'SEPARATE_ALL' %}
+{% include 'fsm_state_register_update.j2' %}
+
+{% include 'fsm_next_state.j2' %}
+
+{% include 'fsm_state_output.j2' %}
+{%- elif coding_structure == 'SEPARATE_COMB_AND_SEQ' %}
+{% include 'fsm_state_register_update.j2' %}
+
+{% include 'fsm_combined_next_state_output.j2' %}
+{%- elif coding_structure == 'SEPARATE_COMB_OUT' %}
+{% include 'fsm_combined_state_register_next_state.j2' %}
+
+{% include 'fsm_state_output.j2' %}
+{%- elif coding_structure == 'ALL_IN_ONE' %}
+{% include 'fsm_all_in_one_logic.j2' %}
+{%- endif %}
+
+{{ end() }}

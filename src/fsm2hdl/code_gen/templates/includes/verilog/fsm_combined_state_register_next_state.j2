@@ -1,0 +1,38 @@
+{%- from 'verilog/combined_state_register_next_state.j2' import combined_state_register_next_state -%}
+{%- from 'verilog/reset_condition.j2' import reset_condition -%}
+{%- from 'verilog/sensitivity_list.j2' import sequential_logic_sensitivity_list -%}
+{%- from 'verilog/state_condition.j2' import state_condition -%}
+
+// combined state register and next state logic
+always @({{ sequential_logic_sensitivity_list(reset_type, reset_active_level) }}) begin
+    if ({{ reset_condition(reset_active_level) }}) begin       
+        state <= {{ fsm.start_state }};
+    end
+    else begin
+        {%- if combinatorial_structure == 'CASE_WITH_NESTED_IF_ELSE' %}
+        case (state)
+        {%- for state in fsm.states.values() %}
+            {{ state_condition(combinatorial_structure, state.name, False) }} begin
+                {{- combined_state_register_next_state(state.transitions, state.name) | indent(12) }}
+            end
+        {%- endfor %}
+            default : begin
+                state <= {{ default_state }};
+            end
+        endcase
+        {%- elif  combinatorial_structure == 'IF_ELSE_NESTED' %}
+    {%- for state in fsm.states.values() %}
+        {%- if loop.first %}
+        {{ state_condition(combinatorial_structure, state.name, True) }}
+        {%- else %}
+        {{ state_condition(combinatorial_structure, state.name, False) }}
+        {%- endif %} begin
+            {{- combined_state_register_next_state(state.transitions, state.name) | indent(8) }}
+        end
+    {%- endfor %}
+        else begin
+            state <= {{ default_state }};
+        end
+        {%- endif %}        
+    end
+end

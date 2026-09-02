@@ -1,0 +1,36 @@
+{%- from 'common/delim_sep_list.j2' import or_sep_list %}
+
+{# sequential logic sensitivity list #}
+{%- macro sequential_logic_sensitivity_list(reset_type, reset_active_level) -%}
+{%- if reset_type == 'SYNC' -%}
+posedge clk
+{%- elif reset_type == 'ASYNC' -%}
+{%- if reset_active_level == 'ACTIVE_LOW' -%}
+posedge clk or negedge rst
+{%- elif reset_active_level == 'ACTIVE_HIGH' -%}
+posedge clk or posedge rst
+{%- endif -%}
+{%- endif -%}
+{%- endmacro %}
+
+{# next state sensitivity list #}
+{%- macro next_state_sensitivity_list(combinatorial_sensitivity_mode, fsm_inputs) -%}
+{%- if combinatorial_sensitivity_mode == 'IMPLICIT' -%}
+*
+{%- elif combinatorial_sensitivity_mode == 'EXPLICIT' -%}
+state or {{ or_sep_list(fsm_inputs) }}
+{%- endif -%}
+{%- endmacro %}
+
+{# state output sensitivity list #}
+{%- macro state_output_sensitivity_list(combinatorial_sensitivity_mode, fsm_type, fsm_inputs) -%}
+{%- if combinatorial_sensitivity_mode == 'IMPLICIT' -%}
+*
+{%- elif combinatorial_sensitivity_mode == 'EXPLICIT' -%}
+{%- if fsm_type == 'MOORE' -%}
+state
+{%- elif fsm_type == 'MEALY' -%}
+state or {{ or_sep_list(fsm_inputs) }}
+{%- endif -%}
+{%- endif -%}
+{%- endmacro %}

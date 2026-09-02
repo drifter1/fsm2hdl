@@ -1,0 +1,14 @@
+{%- from 'common/delim_sep_list.j2' import comma_sep_list -%}
+
+{%- macro header(name, outputs, inputs) -%}
+module {{ name }} (
+    output reg {{ comma_sep_list(outputs) }},
+    input {{ comma_sep_list(inputs) }},
+    input clk, rst
+);
+{%- endmacro %}
+
+{%- macro end() -%}
+endmodule
+{# explicit final newline #}
+{%- endmacro %}

@@ -1,0 +1,11 @@
+{%- from 'common/delim_sep_list.j2' import comma_sep_list -%}
+
+{%- macro entity_header(name, outputs, inputs) -%}
+entity {{ name }} is
+    port (
+        {{ comma_sep_list(outputs) }} : out std_logic;
+        {{ comma_sep_list(inputs) }} : in std_logic;
+        clk, rst : in std_logic
+    );
+end {{ name }};
+{%- endmacro %}

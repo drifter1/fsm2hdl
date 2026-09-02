@@ -1,0 +1,22 @@
+{%- from 'vhdl/reset_condition.j2' import reset_condition -%}
+{%- from 'vhdl/sensitivity_list.j2' import sequential_logic_sensitivity_list -%}
+
+-- state register update logic
+process({{ sequential_logic_sensitivity_list(reset_type) }})
+begin
+    {%- if reset_type == 'SYNC' %}
+    if rising_edge(clk) then
+        if {{ reset_condition(reset_active_level) }} then
+            state <= {{ fsm.start_state }};
+        else
+            state <= state_next;
+        end if;
+    end if;
+    {%- elif reset_type == 'ASYNC' %}
+    if {{ reset_condition(reset_active_level) }} then
+        state <= {{ fsm.start_state }};
+    elsif rising_edge(clk) then
+        state <= state_next;
+    end if;
+    {%- endif %}
+end process;
