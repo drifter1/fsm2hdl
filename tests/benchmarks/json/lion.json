@@ -1,0 +1,212 @@
+{
+    "name": "lion",
+    "states": {
+        "a0": {
+            "name": "a0",
+            "transitions": [
+                {
+                    "transition_id": 1,
+                    "state_source": "a0",
+                    "state_target": "a0",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": []
+                },
+                {
+                    "transition_id": 2,
+                    "state_source": "a0",
+                    "state_target": "a0",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": []
+                },
+                {
+                    "transition_id": 3,
+                    "state_source": "a0",
+                    "state_target": "a1",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": []
+                }
+            ],
+            "outputs": []
+        },
+        "a1": {
+            "name": "a1",
+            "transitions": [
+                {
+                    "transition_id": 4,
+                    "state_source": "a1",
+                    "state_target": "a1",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0"
+                    ]
+                },
+                {
+                    "transition_id": 5,
+                    "state_source": "a1",
+                    "state_target": "a0",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": []
+                },
+                {
+                    "transition_id": 6,
+                    "state_source": "a1",
+                    "state_target": "a2",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a2": {
+            "name": "a2",
+            "transitions": [
+                {
+                    "transition_id": 7,
+                    "state_source": "a2",
+                    "state_target": "a2",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0"
+                    ]
+                },
+                {
+                    "transition_id": 8,
+                    "state_source": "a2",
+                    "state_target": "a1",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0"
+                    ]
+                },
+                {
+                    "transition_id": 9,
+                    "state_source": "a2",
+                    "state_target": "a3",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a3": {
+            "name": "a3",
+            "transitions": [
+                {
+                    "transition_id": 10,
+                    "state_source": "a3",
+                    "state_target": "a3",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0"
+                    ]
+                },
+                {
+                    "transition_id": 11,
+                    "state_source": "a3",
+                    "state_target": "a2",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0"
+                    ]
+                }
+            ],
+            "outputs": []
+        }
+    },
+    "inputs": [
+        "x0",
+        "x1"
+    ],
+    "outputs": [
+        "y0"
+    ],
+    "start_state": "a0",
+    "fsm_type": "MEALY"
+}

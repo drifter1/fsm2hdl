@@ -1,0 +1,2772 @@
+{
+    "name": "planet",
+    "states": {
+        "a0": {
+            "name": "a0",
+            "transitions": [
+                {
+                    "transition_id": 1,
+                    "state_source": "a0",
+                    "state_target": "a1",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a1": {
+            "name": "a1",
+            "transitions": [
+                {
+                    "transition_id": 2,
+                    "state_source": "a1",
+                    "state_target": "a1",
+                    "inputs": [
+                        {
+                            "name": "x4",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": []
+                },
+                {
+                    "transition_id": 3,
+                    "state_source": "a1",
+                    "state_target": "a1",
+                    "inputs": [
+                        {
+                            "name": "x4",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y9",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 4,
+                    "state_source": "a1",
+                    "state_target": "a1",
+                    "inputs": [
+                        {
+                            "name": "x4",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y8",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 5,
+                    "state_source": "a1",
+                    "state_target": "a2",
+                    "inputs": [
+                        {
+                            "name": "x4",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y11",
+                        "y12",
+                        "y15"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a2": {
+            "name": "a2",
+            "transitions": [
+                {
+                    "transition_id": 6,
+                    "state_source": "a2",
+                    "state_target": "a3",
+                    "inputs": [
+                        {
+                            "name": "x6",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 7,
+                    "state_source": "a2",
+                    "state_target": "a3",
+                    "inputs": [
+                        {
+                            "name": "x3",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 8,
+                    "state_source": "a2",
+                    "state_target": "a0",
+                    "inputs": [
+                        {
+                            "name": "x3",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x6",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y8",
+                        "y10",
+                        "y13",
+                        "y18"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a3": {
+            "name": "a3",
+            "transitions": [
+                {
+                    "transition_id": 9,
+                    "state_source": "a3",
+                    "state_target": "a4",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y2",
+                        "y3",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y8",
+                        "y17"
+                    ]
+                },
+                {
+                    "transition_id": 10,
+                    "state_source": "a3",
+                    "state_target": "a4",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y2",
+                        "y3",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y17"
+                    ]
+                },
+                {
+                    "transition_id": 11,
+                    "state_source": "a3",
+                    "state_target": "a4",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y12"
+                    ]
+                },
+                {
+                    "transition_id": 12,
+                    "state_source": "a3",
+                    "state_target": "a4",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y9",
+                        "y12",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 13,
+                    "state_source": "a3",
+                    "state_target": "a5",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y7",
+                        "y8",
+                        "y12"
+                    ]
+                },
+                {
+                    "transition_id": 14,
+                    "state_source": "a3",
+                    "state_target": "a4",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y8",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 15,
+                    "state_source": "a3",
+                    "state_target": "a4",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y11",
+                        "y12"
+                    ]
+                },
+                {
+                    "transition_id": 16,
+                    "state_source": "a3",
+                    "state_target": "a4",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y9",
+                        "y11",
+                        "y12",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 17,
+                    "state_source": "a3",
+                    "state_target": "a5",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y7",
+                        "y8",
+                        "y11",
+                        "y12"
+                    ]
+                },
+                {
+                    "transition_id": 18,
+                    "state_source": "a3",
+                    "state_target": "a4",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y8",
+                        "y11",
+                        "y18"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a4": {
+            "name": "a4",
+            "transitions": [
+                {
+                    "transition_id": 19,
+                    "state_source": "a4",
+                    "state_target": "a6",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a6": {
+            "name": "a6",
+            "transitions": [
+                {
+                    "transition_id": 20,
+                    "state_source": "a6",
+                    "state_target": "a7",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 21,
+                    "state_source": "a6",
+                    "state_target": "a7",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y11",
+                        "y18"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a7": {
+            "name": "a7",
+            "transitions": [
+                {
+                    "transition_id": 22,
+                    "state_source": "a7",
+                    "state_target": "a8",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x6",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 23,
+                    "state_source": "a7",
+                    "state_target": "a8",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x3",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x6",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 24,
+                    "state_source": "a7",
+                    "state_target": "a9",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x6",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 25,
+                    "state_source": "a7",
+                    "state_target": "a10",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x3",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x6",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 26,
+                    "state_source": "a7",
+                    "state_target": "a8",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a8": {
+            "name": "a8",
+            "transitions": [
+                {
+                    "transition_id": 27,
+                    "state_source": "a8",
+                    "state_target": "a11",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y3",
+                        "y4",
+                        "y6",
+                        "y8",
+                        "y11"
+                    ]
+                },
+                {
+                    "transition_id": 28,
+                    "state_source": "a8",
+                    "state_target": "a11",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y3",
+                        "y4",
+                        "y6",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a11": {
+            "name": "a11",
+            "transitions": [
+                {
+                    "transition_id": 29,
+                    "state_source": "a11",
+                    "state_target": "a12",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 30,
+                    "state_source": "a11",
+                    "state_target": "a13",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a13": {
+            "name": "a13",
+            "transitions": [
+                {
+                    "transition_id": 31,
+                    "state_source": "a13",
+                    "state_target": "a14",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y8",
+                        "y11"
+                    ]
+                },
+                {
+                    "transition_id": 32,
+                    "state_source": "a13",
+                    "state_target": "a14",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y11"
+                    ]
+                },
+                {
+                    "transition_id": 33,
+                    "state_source": "a13",
+                    "state_target": "a14",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 34,
+                    "state_source": "a13",
+                    "state_target": "a14",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a12": {
+            "name": "a12",
+            "transitions": [
+                {
+                    "transition_id": 35,
+                    "state_source": "a12",
+                    "state_target": "a15",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y2",
+                        "y8",
+                        "y11",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 36,
+                    "state_source": "a12",
+                    "state_target": "a15",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y2",
+                        "y8",
+                        "y18"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a14": {
+            "name": "a14",
+            "transitions": [
+                {
+                    "transition_id": 37,
+                    "state_source": "a14",
+                    "state_target": "a16",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a15": {
+            "name": "a15",
+            "transitions": [
+                {
+                    "transition_id": 38,
+                    "state_source": "a15",
+                    "state_target": "a17",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a16": {
+            "name": "a16",
+            "transitions": [
+                {
+                    "transition_id": 39,
+                    "state_source": "a16",
+                    "state_target": "a18",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y3",
+                        "y4",
+                        "y7",
+                        "y8",
+                        "y11"
+                    ]
+                },
+                {
+                    "transition_id": 40,
+                    "state_source": "a16",
+                    "state_target": "a18",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y3",
+                        "y4",
+                        "y7",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 41,
+                    "state_source": "a16",
+                    "state_target": "a18",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y3",
+                        "y4",
+                        "y8",
+                        "y11"
+                    ]
+                },
+                {
+                    "transition_id": 42,
+                    "state_source": "a16",
+                    "state_target": "a18",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y3",
+                        "y4",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a17": {
+            "name": "a17",
+            "transitions": [
+                {
+                    "transition_id": 43,
+                    "state_source": "a17",
+                    "state_target": "a18",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y3",
+                        "y8",
+                        "y11",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 44,
+                    "state_source": "a17",
+                    "state_target": "a18",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y3",
+                        "y8",
+                        "y18"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a18": {
+            "name": "a18",
+            "transitions": [
+                {
+                    "transition_id": 45,
+                    "state_source": "a18",
+                    "state_target": "a19",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a19": {
+            "name": "a19",
+            "transitions": [
+                {
+                    "transition_id": 46,
+                    "state_source": "a19",
+                    "state_target": "a20",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y5",
+                        "y7",
+                        "y8",
+                        "y11",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 47,
+                    "state_source": "a19",
+                    "state_target": "a20",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y5",
+                        "y7",
+                        "y8",
+                        "y18"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a20": {
+            "name": "a20",
+            "transitions": [
+                {
+                    "transition_id": 48,
+                    "state_source": "a20",
+                    "state_target": "a21",
+                    "inputs": [
+                        {
+                            "name": "x3",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 49,
+                    "state_source": "a20",
+                    "state_target": "a22",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x3",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8",
+                        "y14"
+                    ]
+                },
+                {
+                    "transition_id": 50,
+                    "state_source": "a20",
+                    "state_target": "a22",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x3",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x6",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8",
+                        "y14"
+                    ]
+                },
+                {
+                    "transition_id": 51,
+                    "state_source": "a20",
+                    "state_target": "a23",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x3",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x6",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 52,
+                    "state_source": "a20",
+                    "state_target": "a24",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x3",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8",
+                        "y14"
+                    ]
+                },
+                {
+                    "transition_id": 53,
+                    "state_source": "a20",
+                    "state_target": "a24",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x3",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x6",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8",
+                        "y14"
+                    ]
+                },
+                {
+                    "transition_id": 54,
+                    "state_source": "a20",
+                    "state_target": "a21",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x3",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x6",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a21": {
+            "name": "a21",
+            "transitions": [
+                {
+                    "transition_id": 55,
+                    "state_source": "a21",
+                    "state_target": "a2",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y11"
+                    ]
+                },
+                {
+                    "transition_id": 56,
+                    "state_source": "a21",
+                    "state_target": "a2",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y8",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 57,
+                    "state_source": "a21",
+                    "state_target": "a2",
+                    "inputs": [
+                        {
+                            "name": "x0",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a22": {
+            "name": "a22",
+            "transitions": [
+                {
+                    "transition_id": 58,
+                    "state_source": "a22",
+                    "state_target": "a25",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y3",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 59,
+                    "state_source": "a22",
+                    "state_target": "a25",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y3",
+                        "y5",
+                        "y7",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 60,
+                    "state_source": "a22",
+                    "state_target": "a26",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y11"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a25": {
+            "name": "a25",
+            "transitions": [
+                {
+                    "transition_id": 61,
+                    "state_source": "a25",
+                    "state_target": "a22",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 62,
+                    "state_source": "a25",
+                    "state_target": "a27",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 63,
+                    "state_source": "a25",
+                    "state_target": "a22",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 64,
+                    "state_source": "a25",
+                    "state_target": "a27",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a27": {
+            "name": "a27",
+            "transitions": [
+                {
+                    "transition_id": 65,
+                    "state_source": "a27",
+                    "state_target": "a28",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y2",
+                        "y3",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 66,
+                    "state_source": "a27",
+                    "state_target": "a29",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y2",
+                        "y3",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y11"
+                    ]
+                },
+                {
+                    "transition_id": 67,
+                    "state_source": "a27",
+                    "state_target": "a28",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y2",
+                        "y3",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 68,
+                    "state_source": "a27",
+                    "state_target": "a29",
+                    "inputs": [
+                        {
+                            "name": "x1",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y2",
+                        "y3",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y8",
+                        "y11"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a28": {
+            "name": "a28",
+            "transitions": [
+                {
+                    "transition_id": 69,
+                    "state_source": "a28",
+                    "state_target": "a22",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a29": {
+            "name": "a29",
+            "transitions": [
+                {
+                    "transition_id": 70,
+                    "state_source": "a29",
+                    "state_target": "a24",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a24": {
+            "name": "a24",
+            "transitions": [
+                {
+                    "transition_id": 71,
+                    "state_source": "a24",
+                    "state_target": "a26",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a26": {
+            "name": "a26",
+            "transitions": [
+                {
+                    "transition_id": 72,
+                    "state_source": "a26",
+                    "state_target": "a30",
+                    "inputs": [
+                        {
+                            "name": "x3",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x6",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 73,
+                    "state_source": "a26",
+                    "state_target": "a31",
+                    "inputs": [
+                        {
+                            "name": "x3",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x6",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8",
+                        "y13"
+                    ]
+                },
+                {
+                    "transition_id": 74,
+                    "state_source": "a26",
+                    "state_target": "a32",
+                    "inputs": [
+                        {
+                            "name": "x6",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8",
+                        "y17"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a30": {
+            "name": "a30",
+            "transitions": [
+                {
+                    "transition_id": 75,
+                    "state_source": "a30",
+                    "state_target": "a33",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y12"
+                    ]
+                },
+                {
+                    "transition_id": 76,
+                    "state_source": "a30",
+                    "state_target": "a33",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y9",
+                        "y12",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 77,
+                    "state_source": "a30",
+                    "state_target": "a33",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y8",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 78,
+                    "state_source": "a30",
+                    "state_target": "a5",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y7",
+                        "y8",
+                        "y12"
+                    ]
+                },
+                {
+                    "transition_id": 79,
+                    "state_source": "a30",
+                    "state_target": "a26",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y11"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a33": {
+            "name": "a33",
+            "transitions": [
+                {
+                    "transition_id": 80,
+                    "state_source": "a33",
+                    "state_target": "a30",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a31": {
+            "name": "a31",
+            "transitions": [
+                {
+                    "transition_id": 81,
+                    "state_source": "a31",
+                    "state_target": "a34",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y5",
+                        "y7",
+                        "y8",
+                        "y18"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a34": {
+            "name": "a34",
+            "transitions": [
+                {
+                    "transition_id": 82,
+                    "state_source": "a34",
+                    "state_target": "a30",
+                    "inputs": [
+                        {
+                            "name": "x3",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 83,
+                    "state_source": "a34",
+                    "state_target": "a3",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x3",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8",
+                        "y15"
+                    ]
+                },
+                {
+                    "transition_id": 84,
+                    "state_source": "a34",
+                    "state_target": "a3",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x3",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8",
+                        "y16"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a32": {
+            "name": "a32",
+            "transitions": [
+                {
+                    "transition_id": 85,
+                    "state_source": "a32",
+                    "state_target": "a35",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y18"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a35": {
+            "name": "a35",
+            "transitions": [
+                {
+                    "transition_id": 86,
+                    "state_source": "a35",
+                    "state_target": "a30",
+                    "inputs": [
+                        {
+                            "name": "x3",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 87,
+                    "state_source": "a35",
+                    "state_target": "a36",
+                    "inputs": [
+                        {
+                            "name": "x3",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a36": {
+            "name": "a36",
+            "transitions": [
+                {
+                    "transition_id": 88,
+                    "state_source": "a36",
+                    "state_target": "a37",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y3",
+                        "y5",
+                        "y7",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 89,
+                    "state_source": "a36",
+                    "state_target": "a38",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y7",
+                        "y8",
+                        "y11"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a37": {
+            "name": "a37",
+            "transitions": [
+                {
+                    "transition_id": 90,
+                    "state_source": "a37",
+                    "state_target": "a36",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x3",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 91,
+                    "state_source": "a37",
+                    "state_target": "a39",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 92,
+                    "state_source": "a37",
+                    "state_target": "a39",
+                    "inputs": [
+                        {
+                            "name": "x3",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a39": {
+            "name": "a39",
+            "transitions": [
+                {
+                    "transition_id": 93,
+                    "state_source": "a39",
+                    "state_target": "a38",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y7",
+                        "y8",
+                        "y11"
+                    ]
+                },
+                {
+                    "transition_id": 94,
+                    "state_source": "a39",
+                    "state_target": "a38",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y7",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a38": {
+            "name": "a38",
+            "transitions": [
+                {
+                    "transition_id": 95,
+                    "state_source": "a38",
+                    "state_target": "a40",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a40": {
+            "name": "a40",
+            "transitions": [
+                {
+                    "transition_id": 96,
+                    "state_source": "a40",
+                    "state_target": "a41",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 97,
+                    "state_source": "a40",
+                    "state_target": "a41",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y8",
+                        "y11"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a41": {
+            "name": "a41",
+            "transitions": [
+                {
+                    "transition_id": 98,
+                    "state_source": "a41",
+                    "state_target": "a13",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8",
+                        "y16"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a10": {
+            "name": "a10",
+            "transitions": [
+                {
+                    "transition_id": 99,
+                    "state_source": "a10",
+                    "state_target": "a42",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y12"
+                    ]
+                },
+                {
+                    "transition_id": 100,
+                    "state_source": "a10",
+                    "state_target": "a42",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y9",
+                        "y12",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 101,
+                    "state_source": "a10",
+                    "state_target": "a5",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": false
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y7",
+                        "y8",
+                        "y12"
+                    ]
+                },
+                {
+                    "transition_id": 102,
+                    "state_source": "a10",
+                    "state_target": "a42",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x4",
+                            "inverted": true
+                        },
+                        {
+                            "name": "x5",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y8",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 103,
+                    "state_source": "a10",
+                    "state_target": "a43",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y11"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a42": {
+            "name": "a42",
+            "transitions": [
+                {
+                    "transition_id": 104,
+                    "state_source": "a42",
+                    "state_target": "a10",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a43": {
+            "name": "a43",
+            "transitions": [
+                {
+                    "transition_id": 105,
+                    "state_source": "a43",
+                    "state_target": "a9",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8",
+                        "y17"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a9": {
+            "name": "a9",
+            "transitions": [
+                {
+                    "transition_id": 106,
+                    "state_source": "a9",
+                    "state_target": "a5",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y7",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a5": {
+            "name": "a5",
+            "transitions": [
+                {
+                    "transition_id": 107,
+                    "state_source": "a5",
+                    "state_target": "a44",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a44": {
+            "name": "a44",
+            "transitions": [
+                {
+                    "transition_id": 108,
+                    "state_source": "a44",
+                    "state_target": "a45",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y8"
+                    ]
+                },
+                {
+                    "transition_id": 109,
+                    "state_source": "a44",
+                    "state_target": "a45",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y8",
+                        "y11"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a45": {
+            "name": "a45",
+            "transitions": [
+                {
+                    "transition_id": 110,
+                    "state_source": "a45",
+                    "state_target": "a46",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a46": {
+            "name": "a46",
+            "transitions": [
+                {
+                    "transition_id": 111,
+                    "state_source": "a46",
+                    "state_target": "a7",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y3",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y16"
+                    ]
+                },
+                {
+                    "transition_id": 112,
+                    "state_source": "a46",
+                    "state_target": "a7",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y1",
+                        "y2",
+                        "y3",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y11",
+                        "y16"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a23": {
+            "name": "a23",
+            "transitions": [
+                {
+                    "transition_id": 113,
+                    "state_source": "a23",
+                    "state_target": "a47",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": true
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y8",
+                        "y18"
+                    ]
+                },
+                {
+                    "transition_id": 114,
+                    "state_source": "a23",
+                    "state_target": "a0",
+                    "inputs": [
+                        {
+                            "name": "x2",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y4",
+                        "y5",
+                        "y6",
+                        "y7",
+                        "y8",
+                        "y10",
+                        "y11",
+                        "y13"
+                    ]
+                }
+            ],
+            "outputs": []
+        },
+        "a47": {
+            "name": "a47",
+            "transitions": [
+                {
+                    "transition_id": 115,
+                    "state_source": "a47",
+                    "state_target": "a23",
+                    "inputs": [
+                        {
+                            "name": "1",
+                            "inverted": false
+                        }
+                    ],
+                    "outputs": [
+                        "y0",
+                        "y2",
+                        "y5",
+                        "y8"
+                    ]
+                }
+            ],
+            "outputs": []
+        }
+    },
+    "inputs": [
+        "x0",
+        "x1",
+        "x2",
+        "x3",
+        "x4",
+        "x5",
+        "x6"
+    ],
+    "outputs": [
+        "y0",
+        "y1",
+        "y2",
+        "y3",
+        "y4",
+        "y5",
+        "y6",
+        "y7",
+        "y8",
+        "y9",
+        "y10",
+        "y11",
+        "y12",
+        "y13",
+        "y14",
+        "y15",
+        "y16",
+        "y17",
+        "y18"
+    ],
+    "start_state": "a0",
+    "fsm_type": "MEALY"
+}
